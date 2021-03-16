@@ -8,7 +8,7 @@ part of 'news_articles.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-NewsArticles _$NewsArticlesFromJson(Map<String, dynamic> json) {
+NewsArticle _$NewsArticlesFromJson(Map<String, dynamic> json) {
   return _NewsArticles.fromJson(json);
 }
 
@@ -35,8 +35,8 @@ class _$NewsArticlesTearOff {
   }
 
 // ignore: unused_element
-  NewsArticles fromJson(Map<String, Object> json) {
-    return NewsArticles.fromJson(json);
+  NewsArticle fromJson(Map<String, Object> json) {
+    return NewsArticle.fromJson(json);
   }
 }
 
@@ -55,13 +55,13 @@ mixin _$NewsArticles {
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
-  $NewsArticlesCopyWith<NewsArticles> get copyWith;
+  $NewsArticlesCopyWith<NewsArticle> get copyWith;
 }
 
 /// @nodoc
 abstract class $NewsArticlesCopyWith<$Res> {
   factory $NewsArticlesCopyWith(
-          NewsArticles value, $Res Function(NewsArticles) then) =
+          NewsArticle value, $Res Function(NewsArticle) then) =
       _$NewsArticlesCopyWithImpl<$Res>;
   $Res call(
       {String author,
@@ -76,9 +76,9 @@ abstract class $NewsArticlesCopyWith<$Res> {
 class _$NewsArticlesCopyWithImpl<$Res> implements $NewsArticlesCopyWith<$Res> {
   _$NewsArticlesCopyWithImpl(this._value, this._then);
 
-  final NewsArticles _value;
+  final NewsArticle _value;
   // ignore: unused_field
-  final $Res Function(NewsArticles) _then;
+  final $Res Function(NewsArticle) _then;
 
   @override
   $Res call({
@@ -227,7 +227,7 @@ class _$_NewsArticles implements _NewsArticles {
   }
 }
 
-abstract class _NewsArticles implements NewsArticles {
+abstract class _NewsArticles implements NewsArticle {
   const factory _NewsArticles(
       {String author,
       String title,

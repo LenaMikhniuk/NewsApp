@@ -5,7 +5,7 @@ part 'news_model.g.dart';
 
 @freezed
 abstract class NewsModel with _$NewsModel {
-  const factory NewsModel({List<NewsArticles> articles}) = _NewsModel;
+  const factory NewsModel({List<NewsArticle> articles}) = _NewsModel;
 
   factory NewsModel.fromJson(Map<String, dynamic> json) =>
       _$NewsModelFromJson(json);

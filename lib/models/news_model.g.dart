@@ -10,7 +10,7 @@ _$_NewsModel _$_$_NewsModelFromJson(Map<String, dynamic> json) {
   return _$_NewsModel(
     articles: (json['articles'] as List)
         ?.map((e) =>
-            e == null ? null : NewsArticles.fromJson(e as Map<String, dynamic>))
+            e == null ? null : NewsArticle.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }

@@ -17,7 +17,7 @@ class _$NewsModelTearOff {
   const _$NewsModelTearOff();
 
 // ignore: unused_element
-  _NewsModel call({List<NewsArticles> articles}) {
+  _NewsModel call({List<NewsArticle> articles}) {
     return _NewsModel(
       articles: articles,
     );
@@ -35,7 +35,7 @@ const $NewsModel = _$NewsModelTearOff();
 
 /// @nodoc
 mixin _$NewsModel {
-  List<NewsArticles> get articles;
+  List<NewsArticle> get articles;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -46,7 +46,7 @@ mixin _$NewsModel {
 abstract class $NewsModelCopyWith<$Res> {
   factory $NewsModelCopyWith(NewsModel value, $Res Function(NewsModel) then) =
       _$NewsModelCopyWithImpl<$Res>;
-  $Res call({List<NewsArticles> articles});
+  $Res call({List<NewsArticle> articles});
 }
 
 /// @nodoc
@@ -62,9 +62,8 @@ class _$NewsModelCopyWithImpl<$Res> implements $NewsModelCopyWith<$Res> {
     Object articles = freezed,
   }) {
     return _then(_value.copyWith(
-      articles: articles == freezed
-          ? _value.articles
-          : articles as List<NewsArticles>,
+      articles:
+          articles == freezed ? _value.articles : articles as List<NewsArticle>,
     ));
   }
 }
@@ -75,7 +74,7 @@ abstract class _$NewsModelCopyWith<$Res> implements $NewsModelCopyWith<$Res> {
           _NewsModel value, $Res Function(_NewsModel) then) =
       __$NewsModelCopyWithImpl<$Res>;
   @override
-  $Res call({List<NewsArticles> articles});
+  $Res call({List<NewsArticle> articles});
 }
 
 /// @nodoc
@@ -92,9 +91,8 @@ class __$NewsModelCopyWithImpl<$Res> extends _$NewsModelCopyWithImpl<$Res>
     Object articles = freezed,
   }) {
     return _then(_NewsModel(
-      articles: articles == freezed
-          ? _value.articles
-          : articles as List<NewsArticles>,
+      articles:
+          articles == freezed ? _value.articles : articles as List<NewsArticle>,
     ));
   }
 }
@@ -109,7 +107,7 @@ class _$_NewsModel implements _NewsModel {
       _$_$_NewsModelFromJson(json);
 
   @override
-  final List<NewsArticles> articles;
+  final List<NewsArticle> articles;
 
   @override
   String toString() {
@@ -141,13 +139,13 @@ class _$_NewsModel implements _NewsModel {
 }
 
 abstract class _NewsModel implements NewsModel {
-  const factory _NewsModel({List<NewsArticles> articles}) = _$_NewsModel;
+  const factory _NewsModel({List<NewsArticle> articles}) = _$_NewsModel;
 
   factory _NewsModel.fromJson(Map<String, dynamic> json) =
       _$_NewsModel.fromJson;
 
   @override
-  List<NewsArticles> get articles;
+  List<NewsArticle> get articles;
   @override
   @JsonKey(ignore: true)
   _$NewsModelCopyWith<_NewsModel> get copyWith;

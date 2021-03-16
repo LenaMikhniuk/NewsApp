@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/models/news_articles.dart';
 
 class NewsScreenItems extends StatelessWidget {
-  final NewsArticles article;
+  final NewsArticle article;
 
   const NewsScreenItems(this.article);
 

@@ -4,8 +4,8 @@ part 'news_articles.freezed.dart';
 part 'news_articles.g.dart';
 
 @freezed
-abstract class NewsArticles with _$NewsArticles {
-  const factory NewsArticles(
+abstract class NewsArticle with _$NewsArticles {
+  const factory NewsArticle(
       {String author,
       String title,
       String description,
@@ -13,6 +13,6 @@ abstract class NewsArticles with _$NewsArticles {
       String urlToImage,
       String publishedAt}) = _NewsArticles;
 
-  factory NewsArticles.fromJson(Map<String, dynamic> json) =>
+  factory NewsArticle.fromJson(Map<String, dynamic> json) =>
       _$NewsArticlesFromJson(json);
 }
