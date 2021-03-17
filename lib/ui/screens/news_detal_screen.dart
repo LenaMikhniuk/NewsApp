@@ -5,6 +5,12 @@ import 'package:url_launcher/url_launcher.dart';
 class NewsDetailScreen extends StatelessWidget {
   final NewsArticle article;
 
+  void _launchURL() async {
+    await canLaunch(article.url)
+        ? await launch(article.url)
+        : throw 'Could not launch ${article.url}';
+  }
+
   const NewsDetailScreen({Key key, this.article}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -51,7 +57,7 @@ class NewsDetailScreen extends StatelessWidget {
                 'Click here to see more information ',
                 style: TextStyle(fontSize: 17),
               ),
-              onTap: () => launch(article.url),
+              onTap: _launchURL,
             )
           ],
         ),
