@@ -36,7 +36,15 @@ class NewsDetailScreen extends StatelessWidget {
             orElse: () {
               return;
             },
-            success: (model) {
+            successAdd: (model) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  duration: (Duration(milliseconds: 400)),
+                  content: Text(model.message),
+                ),
+              );
+            },
+            successDelete: (model) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   duration: (Duration(milliseconds: 400)),

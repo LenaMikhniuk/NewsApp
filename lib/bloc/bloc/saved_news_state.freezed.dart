@@ -42,8 +42,15 @@ class _$SavedNewsStateTearOff {
   }
 
 // ignore: unused_element
-  Success success(SavedNewsStateViewModel model) {
-    return Success(
+  SuccessAdd successAdd(SavedNewsStateViewModel model) {
+    return SuccessAdd(
+      model,
+    );
+  }
+
+// ignore: unused_element
+  SuccessDelete successDelete(SavedNewsStateViewModel model) {
+    return SuccessDelete(
       model,
     );
   }
@@ -63,7 +70,8 @@ mixin _$SavedNewsState {
     @required TResult loading(SavedNewsStateViewModel model),
     @required TResult loaded(SavedNewsStateViewModel model),
     @required TResult error(SavedNewsStateViewModel model),
-    @required TResult success(SavedNewsStateViewModel model),
+    @required TResult successAdd(SavedNewsStateViewModel model),
+    @required TResult successDelete(SavedNewsStateViewModel model),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -71,7 +79,8 @@ mixin _$SavedNewsState {
     TResult loading(SavedNewsStateViewModel model),
     TResult loaded(SavedNewsStateViewModel model),
     TResult error(SavedNewsStateViewModel model),
-    TResult success(SavedNewsStateViewModel model),
+    TResult successAdd(SavedNewsStateViewModel model),
+    TResult successDelete(SavedNewsStateViewModel model),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -80,7 +89,8 @@ mixin _$SavedNewsState {
     @required TResult loading(Loading value),
     @required TResult loaded(Loaded value),
     @required TResult error(Error value),
-    @required TResult success(Success value),
+    @required TResult successAdd(SuccessAdd value),
+    @required TResult successDelete(SuccessDelete value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -88,7 +98,8 @@ mixin _$SavedNewsState {
     TResult loading(Loading value),
     TResult loaded(Loaded value),
     TResult error(Error value),
-    TResult success(Success value),
+    TResult successAdd(SuccessAdd value),
+    TResult successDelete(SuccessDelete value),
     @required TResult orElse(),
   });
 
@@ -201,13 +212,15 @@ class _$Initial implements Initial {
     @required TResult loading(SavedNewsStateViewModel model),
     @required TResult loaded(SavedNewsStateViewModel model),
     @required TResult error(SavedNewsStateViewModel model),
-    @required TResult success(SavedNewsStateViewModel model),
+    @required TResult successAdd(SavedNewsStateViewModel model),
+    @required TResult successDelete(SavedNewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
     return initial(model);
   }
 
@@ -218,7 +231,8 @@ class _$Initial implements Initial {
     TResult loading(SavedNewsStateViewModel model),
     TResult loaded(SavedNewsStateViewModel model),
     TResult error(SavedNewsStateViewModel model),
-    TResult success(SavedNewsStateViewModel model),
+    TResult successAdd(SavedNewsStateViewModel model),
+    TResult successDelete(SavedNewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -235,13 +249,15 @@ class _$Initial implements Initial {
     @required TResult loading(Loading value),
     @required TResult loaded(Loaded value),
     @required TResult error(Error value),
-    @required TResult success(Success value),
+    @required TResult successAdd(SuccessAdd value),
+    @required TResult successDelete(SuccessDelete value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
     return initial(this);
   }
 
@@ -252,7 +268,8 @@ class _$Initial implements Initial {
     TResult loading(Loading value),
     TResult loaded(Loaded value),
     TResult error(Error value),
-    TResult success(Success value),
+    TResult successAdd(SuccessAdd value),
+    TResult successDelete(SuccessDelete value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -339,13 +356,15 @@ class _$Loading implements Loading {
     @required TResult loading(SavedNewsStateViewModel model),
     @required TResult loaded(SavedNewsStateViewModel model),
     @required TResult error(SavedNewsStateViewModel model),
-    @required TResult success(SavedNewsStateViewModel model),
+    @required TResult successAdd(SavedNewsStateViewModel model),
+    @required TResult successDelete(SavedNewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
     return loading(model);
   }
 
@@ -356,7 +375,8 @@ class _$Loading implements Loading {
     TResult loading(SavedNewsStateViewModel model),
     TResult loaded(SavedNewsStateViewModel model),
     TResult error(SavedNewsStateViewModel model),
-    TResult success(SavedNewsStateViewModel model),
+    TResult successAdd(SavedNewsStateViewModel model),
+    TResult successDelete(SavedNewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -373,13 +393,15 @@ class _$Loading implements Loading {
     @required TResult loading(Loading value),
     @required TResult loaded(Loaded value),
     @required TResult error(Error value),
-    @required TResult success(Success value),
+    @required TResult successAdd(SuccessAdd value),
+    @required TResult successDelete(SuccessDelete value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
     return loading(this);
   }
 
@@ -390,7 +412,8 @@ class _$Loading implements Loading {
     TResult loading(Loading value),
     TResult loaded(Loaded value),
     TResult error(Error value),
-    TResult success(Success value),
+    TResult successAdd(SuccessAdd value),
+    TResult successDelete(SuccessDelete value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -477,13 +500,15 @@ class _$Loaded implements Loaded {
     @required TResult loading(SavedNewsStateViewModel model),
     @required TResult loaded(SavedNewsStateViewModel model),
     @required TResult error(SavedNewsStateViewModel model),
-    @required TResult success(SavedNewsStateViewModel model),
+    @required TResult successAdd(SavedNewsStateViewModel model),
+    @required TResult successDelete(SavedNewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
     return loaded(model);
   }
 
@@ -494,7 +519,8 @@ class _$Loaded implements Loaded {
     TResult loading(SavedNewsStateViewModel model),
     TResult loaded(SavedNewsStateViewModel model),
     TResult error(SavedNewsStateViewModel model),
-    TResult success(SavedNewsStateViewModel model),
+    TResult successAdd(SavedNewsStateViewModel model),
+    TResult successDelete(SavedNewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -511,13 +537,15 @@ class _$Loaded implements Loaded {
     @required TResult loading(Loading value),
     @required TResult loaded(Loaded value),
     @required TResult error(Error value),
-    @required TResult success(Success value),
+    @required TResult successAdd(SuccessAdd value),
+    @required TResult successDelete(SuccessDelete value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
     return loaded(this);
   }
 
@@ -528,7 +556,8 @@ class _$Loaded implements Loaded {
     TResult loading(Loading value),
     TResult loaded(Loaded value),
     TResult error(Error value),
-    TResult success(Success value),
+    TResult successAdd(SuccessAdd value),
+    TResult successDelete(SuccessDelete value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -615,13 +644,15 @@ class _$Error implements Error {
     @required TResult loading(SavedNewsStateViewModel model),
     @required TResult loaded(SavedNewsStateViewModel model),
     @required TResult error(SavedNewsStateViewModel model),
-    @required TResult success(SavedNewsStateViewModel model),
+    @required TResult successAdd(SavedNewsStateViewModel model),
+    @required TResult successDelete(SavedNewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
     return error(model);
   }
 
@@ -632,7 +663,8 @@ class _$Error implements Error {
     TResult loading(SavedNewsStateViewModel model),
     TResult loaded(SavedNewsStateViewModel model),
     TResult error(SavedNewsStateViewModel model),
-    TResult success(SavedNewsStateViewModel model),
+    TResult successAdd(SavedNewsStateViewModel model),
+    TResult successDelete(SavedNewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -649,13 +681,15 @@ class _$Error implements Error {
     @required TResult loading(Loading value),
     @required TResult loaded(Loaded value),
     @required TResult error(Error value),
-    @required TResult success(Success value),
+    @required TResult successAdd(SuccessAdd value),
+    @required TResult successDelete(SuccessDelete value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
     return error(this);
   }
 
@@ -666,7 +700,8 @@ class _$Error implements Error {
     TResult loading(Loading value),
     TResult loaded(Loaded value),
     TResult error(Error value),
-    TResult success(Success value),
+    TResult successAdd(SuccessAdd value),
+    TResult successDelete(SuccessDelete value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -688,9 +723,11 @@ abstract class Error implements SavedNewsState {
 }
 
 /// @nodoc
-abstract class $SuccessCopyWith<$Res> implements $SavedNewsStateCopyWith<$Res> {
-  factory $SuccessCopyWith(Success value, $Res Function(Success) then) =
-      _$SuccessCopyWithImpl<$Res>;
+abstract class $SuccessAddCopyWith<$Res>
+    implements $SavedNewsStateCopyWith<$Res> {
+  factory $SuccessAddCopyWith(
+          SuccessAdd value, $Res Function(SuccessAdd) then) =
+      _$SuccessAddCopyWithImpl<$Res>;
   @override
   $Res call({SavedNewsStateViewModel model});
 
@@ -699,40 +736,40 @@ abstract class $SuccessCopyWith<$Res> implements $SavedNewsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SuccessCopyWithImpl<$Res> extends _$SavedNewsStateCopyWithImpl<$Res>
-    implements $SuccessCopyWith<$Res> {
-  _$SuccessCopyWithImpl(Success _value, $Res Function(Success) _then)
-      : super(_value, (v) => _then(v as Success));
+class _$SuccessAddCopyWithImpl<$Res> extends _$SavedNewsStateCopyWithImpl<$Res>
+    implements $SuccessAddCopyWith<$Res> {
+  _$SuccessAddCopyWithImpl(SuccessAdd _value, $Res Function(SuccessAdd) _then)
+      : super(_value, (v) => _then(v as SuccessAdd));
 
   @override
-  Success get _value => super._value as Success;
+  SuccessAdd get _value => super._value as SuccessAdd;
 
   @override
   $Res call({
     Object model = freezed,
   }) {
-    return _then(Success(
+    return _then(SuccessAdd(
       model == freezed ? _value.model : model as SavedNewsStateViewModel,
     ));
   }
 }
 
 /// @nodoc
-class _$Success implements Success {
-  const _$Success(this.model) : assert(model != null);
+class _$SuccessAdd implements SuccessAdd {
+  const _$SuccessAdd(this.model) : assert(model != null);
 
   @override
   final SavedNewsStateViewModel model;
 
   @override
   String toString() {
-    return 'SavedNewsState.success(model: $model)';
+    return 'SavedNewsState.successAdd(model: $model)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Success &&
+        (other is SuccessAdd &&
             (identical(other.model, model) ||
                 const DeepCollectionEquality().equals(other.model, model)));
   }
@@ -743,8 +780,8 @@ class _$Success implements Success {
 
   @JsonKey(ignore: true)
   @override
-  $SuccessCopyWith<Success> get copyWith =>
-      _$SuccessCopyWithImpl<Success>(this, _$identity);
+  $SuccessAddCopyWith<SuccessAdd> get copyWith =>
+      _$SuccessAddCopyWithImpl<SuccessAdd>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -753,14 +790,16 @@ class _$Success implements Success {
     @required TResult loading(SavedNewsStateViewModel model),
     @required TResult loaded(SavedNewsStateViewModel model),
     @required TResult error(SavedNewsStateViewModel model),
-    @required TResult success(SavedNewsStateViewModel model),
+    @required TResult successAdd(SavedNewsStateViewModel model),
+    @required TResult successDelete(SavedNewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
-    return success(model);
+    assert(successAdd != null);
+    assert(successDelete != null);
+    return successAdd(model);
   }
 
   @override
@@ -770,12 +809,13 @@ class _$Success implements Success {
     TResult loading(SavedNewsStateViewModel model),
     TResult loaded(SavedNewsStateViewModel model),
     TResult error(SavedNewsStateViewModel model),
-    TResult success(SavedNewsStateViewModel model),
+    TResult successAdd(SavedNewsStateViewModel model),
+    TResult successDelete(SavedNewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (success != null) {
-      return success(model);
+    if (successAdd != null) {
+      return successAdd(model);
     }
     return orElse();
   }
@@ -787,14 +827,16 @@ class _$Success implements Success {
     @required TResult loading(Loading value),
     @required TResult loaded(Loaded value),
     @required TResult error(Error value),
-    @required TResult success(Success value),
+    @required TResult successAdd(SuccessAdd value),
+    @required TResult successDelete(SuccessDelete value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    assert(success != null);
-    return success(this);
+    assert(successAdd != null);
+    assert(successDelete != null);
+    return successAdd(this);
   }
 
   @override
@@ -804,25 +846,174 @@ class _$Success implements Success {
     TResult loading(Loading value),
     TResult loaded(Loaded value),
     TResult error(Error value),
-    TResult success(Success value),
+    TResult successAdd(SuccessAdd value),
+    TResult successDelete(SuccessDelete value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (success != null) {
-      return success(this);
+    if (successAdd != null) {
+      return successAdd(this);
     }
     return orElse();
   }
 }
 
-abstract class Success implements SavedNewsState {
-  const factory Success(SavedNewsStateViewModel model) = _$Success;
+abstract class SuccessAdd implements SavedNewsState {
+  const factory SuccessAdd(SavedNewsStateViewModel model) = _$SuccessAdd;
 
   @override
   SavedNewsStateViewModel get model;
   @override
   @JsonKey(ignore: true)
-  $SuccessCopyWith<Success> get copyWith;
+  $SuccessAddCopyWith<SuccessAdd> get copyWith;
+}
+
+/// @nodoc
+abstract class $SuccessDeleteCopyWith<$Res>
+    implements $SavedNewsStateCopyWith<$Res> {
+  factory $SuccessDeleteCopyWith(
+          SuccessDelete value, $Res Function(SuccessDelete) then) =
+      _$SuccessDeleteCopyWithImpl<$Res>;
+  @override
+  $Res call({SavedNewsStateViewModel model});
+
+  @override
+  $SavedNewsStateViewModelCopyWith<$Res> get model;
+}
+
+/// @nodoc
+class _$SuccessDeleteCopyWithImpl<$Res>
+    extends _$SavedNewsStateCopyWithImpl<$Res>
+    implements $SuccessDeleteCopyWith<$Res> {
+  _$SuccessDeleteCopyWithImpl(
+      SuccessDelete _value, $Res Function(SuccessDelete) _then)
+      : super(_value, (v) => _then(v as SuccessDelete));
+
+  @override
+  SuccessDelete get _value => super._value as SuccessDelete;
+
+  @override
+  $Res call({
+    Object model = freezed,
+  }) {
+    return _then(SuccessDelete(
+      model == freezed ? _value.model : model as SavedNewsStateViewModel,
+    ));
+  }
+}
+
+/// @nodoc
+class _$SuccessDelete implements SuccessDelete {
+  const _$SuccessDelete(this.model) : assert(model != null);
+
+  @override
+  final SavedNewsStateViewModel model;
+
+  @override
+  String toString() {
+    return 'SavedNewsState.successDelete(model: $model)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SuccessDelete &&
+            (identical(other.model, model) ||
+                const DeepCollectionEquality().equals(other.model, model)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(model);
+
+  @JsonKey(ignore: true)
+  @override
+  $SuccessDeleteCopyWith<SuccessDelete> get copyWith =>
+      _$SuccessDeleteCopyWithImpl<SuccessDelete>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(SavedNewsStateViewModel model),
+    @required TResult loading(SavedNewsStateViewModel model),
+    @required TResult loaded(SavedNewsStateViewModel model),
+    @required TResult error(SavedNewsStateViewModel model),
+    @required TResult successAdd(SavedNewsStateViewModel model),
+    @required TResult successDelete(SavedNewsStateViewModel model),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(loaded != null);
+    assert(error != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
+    return successDelete(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(SavedNewsStateViewModel model),
+    TResult loading(SavedNewsStateViewModel model),
+    TResult loaded(SavedNewsStateViewModel model),
+    TResult error(SavedNewsStateViewModel model),
+    TResult successAdd(SavedNewsStateViewModel model),
+    TResult successDelete(SavedNewsStateViewModel model),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (successDelete != null) {
+      return successDelete(model);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(Initial value),
+    @required TResult loading(Loading value),
+    @required TResult loaded(Loaded value),
+    @required TResult error(Error value),
+    @required TResult successAdd(SuccessAdd value),
+    @required TResult successDelete(SuccessDelete value),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(loaded != null);
+    assert(error != null);
+    assert(successAdd != null);
+    assert(successDelete != null);
+    return successDelete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(Initial value),
+    TResult loading(Loading value),
+    TResult loaded(Loaded value),
+    TResult error(Error value),
+    TResult successAdd(SuccessAdd value),
+    TResult successDelete(SuccessDelete value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (successDelete != null) {
+      return successDelete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SuccessDelete implements SavedNewsState {
+  const factory SuccessDelete(SavedNewsStateViewModel model) = _$SuccessDelete;
+
+  @override
+  SavedNewsStateViewModel get model;
+  @override
+  @JsonKey(ignore: true)
+  $SuccessDeleteCopyWith<SuccessDelete> get copyWith;
 }
 
 /// @nodoc

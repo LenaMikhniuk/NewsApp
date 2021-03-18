@@ -9,7 +9,10 @@ abstract class SavedNewsState with _$SavedNewsState {
   const factory SavedNewsState.loading(SavedNewsStateViewModel model) = Loading;
   const factory SavedNewsState.loaded(SavedNewsStateViewModel model) = Loaded;
   const factory SavedNewsState.error(SavedNewsStateViewModel model) = Error;
-  const factory SavedNewsState.success(SavedNewsStateViewModel model) = Success;
+  const factory SavedNewsState.successAdd(SavedNewsStateViewModel model) =
+      SuccessAdd;
+  const factory SavedNewsState.successDelete(SavedNewsStateViewModel model) =
+      SuccessDelete;
 }
 
 @freezed

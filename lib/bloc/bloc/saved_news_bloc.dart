@@ -27,7 +27,9 @@ class SavedNewsBloc extends Bloc<SavedNewsEvent, SavedNewsState> {
       addToSavedNews: (article) async* {
         try {
           await DBUtils.insert(newsArticle: article);
-          yield SavedNewsState.success(state.model.copyWith(message: 'Saved'));
+          yield SavedNewsState.successAdd(
+            state.model.copyWith(message: 'Added to saved News'),
+          );
         } catch (e) {
           yield SavedNewsState.error(state.model
               .copyWith(error: 'Something went wrong...\nError:${e.toString}'));
@@ -36,8 +38,9 @@ class SavedNewsBloc extends Bloc<SavedNewsEvent, SavedNewsState> {
       deleteFromSavedNews: (article) async* {
         try {
           await DBUtils.deleteByUrlId(article.url);
-          yield SavedNewsState.success(
-              state.model.copyWith(message: 'Deleted'));
+          yield SavedNewsState.successDelete(
+            state.model.copyWith(message: 'Deleted from saved News'),
+          );
 
           final savedNews = await DBUtils.getData();
 

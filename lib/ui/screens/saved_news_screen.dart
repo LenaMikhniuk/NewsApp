@@ -26,49 +26,45 @@ class _SavedNewsScreenState extends State<SavedNewsScreen> {
     return Scaffold(
       body: BlocBuilder<SavedNewsBloc, SavedNewsState>(
         builder: (context, state) {
-          return state.when(
-            initial: (_) {
-              return Center(child: CircularProgressIndicator());
-            },
-            loading: (_) {
-              return Center(child: CircularProgressIndicator());
-            },
-            error: (_) {
-              return Icon(Icons.error);
-            },
-            success: ((data) {
-              if (data.model != null &&
-                  data.model.articles != null &&
-                  data.model.articles.isNotEmpty) {
-                return ListView.builder(
-                  itemBuilder: (contet, index) {
-                    return NewsScreenItem(data.model.articles[index], true);
-                  },
-                  itemCount: data.model.articles.length,
-                );
-              } else {
-                return Center(
-                  child: Text('no'),
-                );
-              }
-            }),
-            loaded: (data) {
-              if (data.model != null &&
-                  data.model.articles != null &&
-                  data.model.articles.isNotEmpty) {
-                return ListView.builder(
-                  itemBuilder: (contet, index) {
-                    return NewsScreenItem(data.model.articles[index], true);
-                  },
-                  itemCount: data.model.articles.length,
-                );
-              } else {
-                return Center(
-                  child: Text('no'),
-                );
-              }
-            },
-          );
+          return state.when(initial: (_) {
+            return Center(child: CircularProgressIndicator());
+          }, loading: (_) {
+            return Center(child: CircularProgressIndicator());
+          }, error: (_) {
+            return Icon(Icons.error);
+          }, successAdd: ((data) {
+            if (data.model != null &&
+                data.model.articles != null &&
+                data.model.articles.isNotEmpty) {
+              return ListView.builder(
+                itemBuilder: (contet, index) {
+                  return NewsScreenItem(data.model.articles[index], true);
+                },
+                itemCount: data.model.articles.length,
+              );
+            } else {
+              return Center(
+                child: Text('No saved News'),
+              );
+            }
+          }), loaded: (data) {
+            if (data.model != null &&
+                data.model.articles != null &&
+                data.model.articles.isNotEmpty) {
+              return ListView.builder(
+                itemBuilder: (contet, index) {
+                  return NewsScreenItem(data.model.articles[index], true);
+                },
+                itemCount: data.model.articles.length,
+              );
+            } else {
+              return Center(
+                child: Text('No saved News'),
+              );
+            }
+          }, successDelete: (_) {
+            return;
+          });
         },
       ),
     );
