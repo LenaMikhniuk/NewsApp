@@ -40,11 +40,5 @@ class NewsScreenItem extends StatelessWidget {
             ),
           );
         });
-    // ],
-    //       ),
-    //     ),
-    //   ),
-    //
-    // );
   }
 }
