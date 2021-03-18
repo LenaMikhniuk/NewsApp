@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/bloc/saved_news_bloc.dart';
 import 'package:news_app/models/news_articles.dart';
 import 'package:news_app/shared.dart';
+import 'package:news_app/widgets/news_detail_screen_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:news_app/bloc/bloc/saved_news_state.dart';
 import 'package:news_app/bloc/bloc/saved_news_event.dart';
@@ -55,82 +56,19 @@ class NewsDetailScreen extends StatelessWidget {
           );
         },
         builder: (context, state) {
-          return Container(
-            color: AppColors.backgroundColor,
-            width: double.infinity,
-            height: double.infinity,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(top: 20, left: 15, bottom: 10),
-                    child: Text(
-                      article.title ?? 'No title',
-                      style: FontsStyles.baseStyle
-                          .copyWith(fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 15, bottom: 5),
-                    child: Text(
-                      article.description ?? 'No description',
-                      style: FontsStyles.baseStyle.copyWith(fontSize: 17),
-                    ),
-                  ),
-                  InkWell(
-                    child: Text(
-                      'Click here to see more information ',
-                      style: FontsStyles.baseStyle.copyWith(
-                          color: AppColors.textColor.withOpacity(0.6),
-                          fontWeight: FontWeight.w200,
-                          fontSize: 15),
-                    ),
-                    onTap: _launchURL,
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 10, bottom: 15),
-                    child: Image.network(article.urlToImage),
-                  ),
-                  Text(
-                    article.author ?? 'Unknown author',
-                    style: FontsStyles.baseStyle.copyWith(fontSize: 17),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    article.publishedAt ?? '',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          iconSize: 30,
-                          icon: isSaved
-                              ? Icon(Icons.delete_outlined)
-                              : Icon(Icons.save),
-                          onPressed: () {
-                            isSaved
-                                ? BlocProvider.of<SavedNewsBloc>(context).add(
-                                    SavedNewsEvent.deleteFromSavedNews(article),
-                                  )
-                                : BlocProvider.of<SavedNewsBloc>(context).add(
-                                    SavedNewsEvent.addToSavedNews(article),
-                                  );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          return DetailPageWidget(
+            article: article,
+            isSaved: isSaved,
+            onTap: _launchURL,
+            onPressed: () {
+              isSaved
+                  ? BlocProvider.of<SavedNewsBloc>(context).add(
+                      SavedNewsEvent.deleteFromSavedNews(article),
+                    )
+                  : BlocProvider.of<SavedNewsBloc>(context).add(
+                      SavedNewsEvent.addToSavedNews(article),
+                    );
+            },
           );
         },
       ),
