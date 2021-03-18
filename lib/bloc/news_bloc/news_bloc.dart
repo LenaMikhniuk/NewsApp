@@ -8,6 +8,8 @@ import 'package:news_app/services/news_services.dart';
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
   NewsBloc() : super(NewsState.initial());
 
+  NewsServices newsServices = NewsServices();
+
   @override
   Stream<NewsState> mapEventToState(NewsEvent event) {
     return event.when(
@@ -15,7 +17,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         yield NewsState.loading();
 
         try {
-          final newsModel = await NewsServices.getNews();
+          final newsModel = await newsServices.getNews();
 
           // to show article strictly with titles
           final filteredData = newsModel.articles

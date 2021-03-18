@@ -5,6 +5,7 @@ import 'package:news_app/bloc/news_bloc/news_bloc.dart';
 import 'package:news_app/bloc/news_bloc/news_bloc.dart';
 import 'package:news_app/bloc/news_bloc/news_event.dart';
 import 'package:news_app/bloc/news_bloc/news_state.dart';
+import 'package:news_app/shared.dart';
 
 import 'package:news_app/ui/screens/news_screen_item.dart';
 
@@ -33,58 +34,58 @@ class _NewsScreenState extends State<NewsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('News'),
-      ),
-      body: BlocProvider<NewsBloc>(
-        create: (context) => _bloc,
-        child: BlocConsumer<NewsBloc, NewsState>(
-          listener: (context, state) {
-            state.maybeWhen(
-              orElse: () {
-                return;
-              },
-              loading: () {},
-              loaded: (data) {},
-              error: (error) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Row(
-                      children: [
-                        Text(
-                          error,
-                          overflow: TextOverflow.visible,
-                        ),
-                      ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryColor,
+        body: BlocProvider<NewsBloc>(
+          create: (context) => _bloc,
+          child: BlocConsumer<NewsBloc, NewsState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                orElse: () {
+                  return;
+                },
+                loading: () {},
+                loaded: (data) {},
+                error: (error) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Row(
+                        children: [
+                          Text(
+                            error,
+                            overflow: TextOverflow.visible,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
-            );
-          },
-          builder: (context, state) {
-            return state.when(
-              initial: () {
-                return Center(child: CircularProgressIndicator());
-              },
-              loading: () {
-                return Center(child: CircularProgressIndicator());
-              },
-              error: (_) {
-                return Icon(Icons.error);
-              },
-              loaded: (data) {
-                return ListView.builder(
-                  // controller: _scrollController,
-                  itemBuilder: (context, index) {
-                    return NewsScreenItem(data.articles[index], false);
-                  },
-                  itemCount: data.articles.length,
-                );
-              },
-            );
-          },
+                  );
+                },
+              );
+            },
+            builder: (context, state) {
+              return state.when(
+                initial: () {
+                  return Center(child: CircularProgressIndicator());
+                },
+                loading: () {
+                  return Center(child: CircularProgressIndicator());
+                },
+                error: (_) {
+                  return Icon(Icons.error);
+                },
+                loaded: (data) {
+                  return ListView.builder(
+                    // controller: _scrollController,
+                    itemBuilder: (context, index) {
+                      return NewsScreenItem(data.articles[index], false);
+                    },
+                    itemCount: data.articles.length,
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

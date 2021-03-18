@@ -40,7 +40,9 @@ class SavedNewsBloc extends Bloc<SavedNewsEvent, SavedNewsState> {
               state.model.copyWith(message: 'Deleted'));
 
           final savedNews = await DBUtils.getData();
-          yield SavedNewsState.loaded(state.model.copyWith(model: savedNews));
+
+          yield SavedNewsState.loaded(
+              state.model.copyWith(model: savedNews ?? NewsModel()));
         } catch (e) {
           yield SavedNewsState.error(state.model
               .copyWith(error: 'Something went wrong...\nError:${e.toString}'));

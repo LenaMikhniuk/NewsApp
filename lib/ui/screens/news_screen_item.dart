@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/news_articles.dart';
+import 'package:news_app/shared.dart';
 import 'package:news_app/ui/screens/news_detal_screen.dart';
 
 class NewsScreenItem extends StatelessWidget {
@@ -12,20 +13,18 @@ class NewsScreenItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(3.0),
           child: Card(
             elevation: 7,
             child: Column(
               children: [
-                SizedBox(
-                  height: 15,
-                ),
                 Image.network(article.urlToImage),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   article.title ?? "No title",
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
+                  style: FontsStyles.baseStyle,
                 ),
               ],
             ),
