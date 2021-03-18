@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:news_app/bloc/news_bloc/news_state.dart';
 import 'package:news_app/bloc/news_bloc/news_event.dart';
-import 'package:news_app/models/news_model.dart';
 import 'package:news_app/services/news_services.dart';
 
 class NewsBloc extends Bloc<NewsEvent, NewsState> {

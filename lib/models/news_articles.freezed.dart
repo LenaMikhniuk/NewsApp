@@ -8,23 +8,23 @@ part of 'news_articles.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-NewsArticle _$NewsArticlesFromJson(Map<String, dynamic> json) {
-  return _NewsArticles.fromJson(json);
+NewsArticle _$NewsArticleFromJson(Map<String, dynamic> json) {
+  return _NewsArticle.fromJson(json);
 }
 
 /// @nodoc
-class _$NewsArticlesTearOff {
-  const _$NewsArticlesTearOff();
+class _$NewsArticleTearOff {
+  const _$NewsArticleTearOff();
 
 // ignore: unused_element
-  _NewsArticles call(
+  _NewsArticle call(
       {String author,
       String title,
       String description,
       String url,
       String urlToImage,
       String publishedAt}) {
-    return _NewsArticles(
+    return _NewsArticle(
       author: author,
       title: title,
       description: description,
@@ -42,10 +42,10 @@ class _$NewsArticlesTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $NewsArticles = _$NewsArticlesTearOff();
+const $NewsArticle = _$NewsArticleTearOff();
 
 /// @nodoc
-mixin _$NewsArticles {
+mixin _$NewsArticle {
   String get author;
   String get title;
   String get description;
@@ -55,14 +55,14 @@ mixin _$NewsArticles {
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
-  $NewsArticlesCopyWith<NewsArticle> get copyWith;
+  $NewsArticleCopyWith<NewsArticle> get copyWith;
 }
 
 /// @nodoc
-abstract class $NewsArticlesCopyWith<$Res> {
-  factory $NewsArticlesCopyWith(
+abstract class $NewsArticleCopyWith<$Res> {
+  factory $NewsArticleCopyWith(
           NewsArticle value, $Res Function(NewsArticle) then) =
-      _$NewsArticlesCopyWithImpl<$Res>;
+      _$NewsArticleCopyWithImpl<$Res>;
   $Res call(
       {String author,
       String title,
@@ -73,8 +73,8 @@ abstract class $NewsArticlesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewsArticlesCopyWithImpl<$Res> implements $NewsArticlesCopyWith<$Res> {
-  _$NewsArticlesCopyWithImpl(this._value, this._then);
+class _$NewsArticleCopyWithImpl<$Res> implements $NewsArticleCopyWith<$Res> {
+  _$NewsArticleCopyWithImpl(this._value, this._then);
 
   final NewsArticle _value;
   // ignore: unused_field
@@ -104,11 +104,11 @@ class _$NewsArticlesCopyWithImpl<$Res> implements $NewsArticlesCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$NewsArticlesCopyWith<$Res>
-    implements $NewsArticlesCopyWith<$Res> {
-  factory _$NewsArticlesCopyWith(
-          _NewsArticles value, $Res Function(_NewsArticles) then) =
-      __$NewsArticlesCopyWithImpl<$Res>;
+abstract class _$NewsArticleCopyWith<$Res>
+    implements $NewsArticleCopyWith<$Res> {
+  factory _$NewsArticleCopyWith(
+          _NewsArticle value, $Res Function(_NewsArticle) then) =
+      __$NewsArticleCopyWithImpl<$Res>;
   @override
   $Res call(
       {String author,
@@ -120,14 +120,14 @@ abstract class _$NewsArticlesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$NewsArticlesCopyWithImpl<$Res> extends _$NewsArticlesCopyWithImpl<$Res>
-    implements _$NewsArticlesCopyWith<$Res> {
-  __$NewsArticlesCopyWithImpl(
-      _NewsArticles _value, $Res Function(_NewsArticles) _then)
-      : super(_value, (v) => _then(v as _NewsArticles));
+class __$NewsArticleCopyWithImpl<$Res> extends _$NewsArticleCopyWithImpl<$Res>
+    implements _$NewsArticleCopyWith<$Res> {
+  __$NewsArticleCopyWithImpl(
+      _NewsArticle _value, $Res Function(_NewsArticle) _then)
+      : super(_value, (v) => _then(v as _NewsArticle));
 
   @override
-  _NewsArticles get _value => super._value as _NewsArticles;
+  _NewsArticle get _value => super._value as _NewsArticle;
 
   @override
   $Res call({
@@ -138,7 +138,7 @@ class __$NewsArticlesCopyWithImpl<$Res> extends _$NewsArticlesCopyWithImpl<$Res>
     Object urlToImage = freezed,
     Object publishedAt = freezed,
   }) {
-    return _then(_NewsArticles(
+    return _then(_NewsArticle(
       author: author == freezed ? _value.author : author as String,
       title: title == freezed ? _value.title : title as String,
       description:
@@ -155,8 +155,8 @@ class __$NewsArticlesCopyWithImpl<$Res> extends _$NewsArticlesCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_NewsArticles implements _NewsArticles {
-  const _$_NewsArticles(
+class _$_NewsArticle implements _NewsArticle {
+  const _$_NewsArticle(
       {this.author,
       this.title,
       this.description,
@@ -164,8 +164,8 @@ class _$_NewsArticles implements _NewsArticles {
       this.urlToImage,
       this.publishedAt});
 
-  factory _$_NewsArticles.fromJson(Map<String, dynamic> json) =>
-      _$_$_NewsArticlesFromJson(json);
+  factory _$_NewsArticle.fromJson(Map<String, dynamic> json) =>
+      _$_$_NewsArticleFromJson(json);
 
   @override
   final String author;
@@ -182,13 +182,13 @@ class _$_NewsArticles implements _NewsArticles {
 
   @override
   String toString() {
-    return 'NewsArticles(author: $author, title: $title, description: $description, url: $url, urlToImage: $urlToImage, publishedAt: $publishedAt)';
+    return 'NewsArticle(author: $author, title: $title, description: $description, url: $url, urlToImage: $urlToImage, publishedAt: $publishedAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _NewsArticles &&
+        (other is _NewsArticle &&
             (identical(other.author, author) ||
                 const DeepCollectionEquality().equals(other.author, author)) &&
             (identical(other.title, title) ||
@@ -218,26 +218,26 @@ class _$_NewsArticles implements _NewsArticles {
 
   @JsonKey(ignore: true)
   @override
-  _$NewsArticlesCopyWith<_NewsArticles> get copyWith =>
-      __$NewsArticlesCopyWithImpl<_NewsArticles>(this, _$identity);
+  _$NewsArticleCopyWith<_NewsArticle> get copyWith =>
+      __$NewsArticleCopyWithImpl<_NewsArticle>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_NewsArticlesToJson(this);
+    return _$_$_NewsArticleToJson(this);
   }
 }
 
-abstract class _NewsArticles implements NewsArticle {
-  const factory _NewsArticles(
+abstract class _NewsArticle implements NewsArticle {
+  const factory _NewsArticle(
       {String author,
       String title,
       String description,
       String url,
       String urlToImage,
-      String publishedAt}) = _$_NewsArticles;
+      String publishedAt}) = _$_NewsArticle;
 
-  factory _NewsArticles.fromJson(Map<String, dynamic> json) =
-      _$_NewsArticles.fromJson;
+  factory _NewsArticle.fromJson(Map<String, dynamic> json) =
+      _$_NewsArticle.fromJson;
 
   @override
   String get author;
@@ -253,5 +253,5 @@ abstract class _NewsArticles implements NewsArticle {
   String get publishedAt;
   @override
   @JsonKey(ignore: true)
-  _$NewsArticlesCopyWith<_NewsArticles> get copyWith;
+  _$NewsArticleCopyWith<_NewsArticle> get copyWith;
 }

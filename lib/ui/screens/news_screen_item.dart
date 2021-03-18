@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:news_app/models/news_articles.dart';
 import 'package:news_app/ui/screens/news_detal_screen.dart';
 
-class NewsScreenItems extends StatelessWidget {
+class NewsScreenItem extends StatelessWidget {
   final NewsArticle article;
+  final bool isSaved;
 
-  const NewsScreenItems(this.article);
+  NewsScreenItem(this.article, this.isSaved);
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +17,16 @@ class NewsScreenItems extends StatelessWidget {
             elevation: 7,
             child: Column(
               children: [
+                SizedBox(
+                  height: 15,
+                ),
+                Image.network(article.urlToImage),
                 Text(
                   article.title ?? "No title",
                   style: TextStyle(
                     fontSize: 15,
                   ),
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                Image.network(article.urlToImage),
               ],
             ),
           ),
@@ -35,6 +36,7 @@ class NewsScreenItems extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => NewsDetailScreen(
                 article: article,
+                isSaved: isSaved,
               ),
             ),
           );
