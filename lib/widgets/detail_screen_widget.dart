@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/news_articles.dart';
+import 'package:news_app/services/news_services.dart';
 
 import '../shared.dart';
 
 class DetailPageWidget extends StatelessWidget {
-  const DetailPageWidget({
+  DetailPageWidget({
     Key key,
     @required this.article,
     @required this.isSaved,
@@ -16,6 +17,8 @@ class DetailPageWidget extends StatelessWidget {
   final bool isSaved;
   final Function onTap;
   final Function onPressed;
+
+  NewsServices newsServices = NewsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,8 @@ class DetailPageWidget extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 15, bottom: 5),
               child: Text(
-                article.description ?? 'No description',
+                newsServices.removeAllHtmlTags(article.description) ??
+                    'No description',
                 style: FontsStyles.baseStyle.copyWith(fontSize: 17),
               ),
             ),
