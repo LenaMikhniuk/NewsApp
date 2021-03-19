@@ -1,5 +1,7 @@
+import 'package:intl/intl.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/services/network_request.dart';
+import '';
 
 class NewsServices {
   static const String apiKey = '27260db2e4034cb0b2ba15393e3e80ab';
@@ -24,5 +26,16 @@ class NewsServices {
     RegExp exp = RegExp(r'<[^>]*>', multiLine: true, caseSensitive: true);
 
     return htmlText.replaceAll(exp, '');
+  }
+}
+
+class DateTimeService {
+  static String getDayFromDateTime(String data) {
+    if (data != null) {
+      DateTime now = DateTime.parse(data);
+      return DateFormat.yMMMMd().format(now);
+    } else {
+      return '';
+    }
   }
 }

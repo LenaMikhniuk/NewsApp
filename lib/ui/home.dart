@@ -27,19 +27,42 @@ class _HomeState extends State<Home> {
       body: _pages[_selectedPageValue],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedPageValue,
-        unselectedItemColor: AppColors.primaryColor,
-        selectedItemColor: AppColors.textColor,
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            label: 'Current News',
+          buildBottomNavigationBarItem(
+            'Current News',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.save),
-            label: 'Saved News',
+          buildBottomNavigationBarItem(
+            'Saved',
           ),
         ],
         onTap: _selectedPage,
+      ),
+    );
+  }
+
+  BottomNavigationBarItem buildBottomNavigationBarItem(String text) {
+    return BottomNavigationBarItem(
+      icon: Text(
+        text,
+        style: FontsStyles.baseStyle.copyWith(
+          fontWeight: FontWeight.bold,
+          color: AppColors.textColor.withOpacity(0.4),
+        ),
+      ),
+      label: '',
+      activeIcon: Container(
+        decoration: BoxDecoration(
+          color: AppColors.highlightColor,
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
+        ),
+        padding: EdgeInsets.all(10),
+        child: Text(
+          text,
+          style: FontsStyles.baseStyle
+              .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
       ),
     );
   }

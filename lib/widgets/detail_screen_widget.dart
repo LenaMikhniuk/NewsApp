@@ -28,8 +28,56 @@ class DetailPageWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 25,
+                right: 25,
+                bottom: 30,
+                top: 10,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Container(
+                      child: Text(
+                        article.author ?? '',
+                        overflow: TextOverflow.visible,
+                        style: FontsStyles.baseStyle.copyWith(
+                          fontSize: 17,
+                          color: AppColors.textColor.withOpacity(0.5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    DateTimeService.getDayFromDateTime(article.publishedAt),
+                    style: FontsStyles.baseStyle.copyWith(
+                      fontSize: 17,
+                      color: AppColors.textColor.withOpacity(0.5),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  iconSize: 40,
+                  icon: isSaved
+                      ? Icon(
+                          Icons.delete_outlined,
+                        )
+                      : Icon(
+                          Icons.bookmark_border,
+                        ),
+                  onPressed: onPressed,
+                )
+              ],
+            ),
             Container(
-              padding: EdgeInsets.only(top: 20, left: 15, bottom: 10),
+              padding: EdgeInsets.only(left: 25, bottom: 10, right: 15),
               child: Text(
                 article.title ?? 'No title',
                 style:
@@ -37,52 +85,30 @@ class DetailPageWidget extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 15, bottom: 5),
+              padding: EdgeInsets.only(left: 25, bottom: 5, right: 15),
               child: Text(
                 newsServices.removeAllHtmlTags(article.description) ??
                     'No description',
-                style: FontsStyles.baseStyle.copyWith(fontSize: 17),
-              ),
-            ),
-            InkWell(
-              child: Text(
-                'Click here to see more information ',
                 style: FontsStyles.baseStyle.copyWith(
-                    color: AppColors.textColor.withOpacity(0.6),
-                    fontWeight: FontWeight.w200,
-                    fontSize: 15),
+                  fontSize: 18,
+                  color: AppColors.textColor.withOpacity(0.9),
+                ),
               ),
-              onTap: onTap,
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 10, bottom: 15),
-              child: Image.network(article.urlToImage),
-            ),
-            Text(
-              article.author ?? 'Unknown author',
-              style: FontsStyles.baseStyle.copyWith(fontSize: 17),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              article.publishedAt ?? '',
-              style: TextStyle(fontSize: 17),
-            ),
-            SizedBox(
-              height: 25,
             ),
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.only(left: 35),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  IconButton(
-                    iconSize: 30,
-                    icon: isSaved
-                        ? Icon(Icons.delete_outlined)
-                        : Icon(Icons.save),
-                    onPressed: onPressed,
+                  InkWell(
+                    child: Text(
+                      'Open in browser... ',
+                      style: FontsStyles.baseStyle.copyWith(
+                          color: AppColors.highlightColor,
+                          fontWeight: FontWeight.w200,
+                          fontSize: 16),
+                    ),
+                    onTap: onTap,
                   ),
                 ],
               ),

@@ -25,14 +25,6 @@ class NewsDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
-        title: Text(
-          'News',
-          style: FontsStyles.baseStyle.copyWith(fontSize: 30),
-        ),
-      ),
       body: BlocConsumer<SavedNewsBloc, SavedNewsState>(
         listener: (context, state) {
           state.maybeWhen(
@@ -58,19 +50,37 @@ class NewsDetailScreen extends StatelessWidget {
           );
         },
         builder: (context, state) {
-          return DetailPageWidget(
-            article: article,
-            isSaved: isSaved,
-            onTap: _launchURL,
-            onPressed: () {
-              isSaved
-                  ? BlocProvider.of<SavedNewsBloc>(context).add(
-                      SavedNewsEvent.deleteFromSavedNews(article),
-                    )
-                  : BlocProvider.of<SavedNewsBloc>(context).add(
-                      SavedNewsEvent.addToSavedNews(article),
-                    );
-            },
+          return CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                backgroundColor: AppColors.textColor.withOpacity(0.6),
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: true,
+                    background: Image.network(
+                      article.urlToImage ?? 'No image',
+                      fit: BoxFit.cover,
+                    )),
+              ),
+              SliverFillRemaining(
+                child: DetailPageWidget(
+                  article: article,
+                  isSaved: isSaved,
+                  onTap: _launchURL,
+                  onPressed: () {
+                    isSaved
+                        ? BlocProvider.of<SavedNewsBloc>(context).add(
+                            SavedNewsEvent.deleteFromSavedNews(article),
+                          )
+                        : BlocProvider.of<SavedNewsBloc>(context).add(
+                            SavedNewsEvent.addToSavedNews(article),
+                          );
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),
