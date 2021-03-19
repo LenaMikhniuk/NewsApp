@@ -6,19 +6,18 @@ import '../shared.dart';
 
 class DetailPageWidget extends StatelessWidget {
   DetailPageWidget({
-    Key key,
     @required this.article,
     @required this.isSaved,
     @required this.onTap,
     @required this.onPressed,
-  }) : super(key: key);
+  });
 
   final NewsArticle article;
   final bool isSaved;
   final Function onTap;
   final Function onPressed;
 
-  NewsServices newsServices = NewsServices();
+  final NewsServices newsServices = NewsServices();
 
   @override
   Widget build(BuildContext context) {

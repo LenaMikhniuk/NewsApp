@@ -14,26 +14,30 @@ class _$NewsStateTearOff {
   const _$NewsStateTearOff();
 
 // ignore: unused_element
-  Initial initial() {
-    return const Initial();
-  }
-
-// ignore: unused_element
-  Loading loading() {
-    return const Loading();
-  }
-
-// ignore: unused_element
-  Loaded loaded(NewsModel data) {
-    return Loaded(
-      data,
+  Initial initial(NewsStateViewModel model) {
+    return Initial(
+      model,
     );
   }
 
 // ignore: unused_element
-  Error error(String error) {
+  Loading loading(NewsStateViewModel model) {
+    return Loading(
+      model,
+    );
+  }
+
+// ignore: unused_element
+  Loaded loaded(NewsStateViewModel model) {
+    return Loaded(
+      model,
+    );
+  }
+
+// ignore: unused_element
+  Error error(NewsStateViewModel model) {
     return Error(
-      error,
+      model,
     );
   }
 }
@@ -44,19 +48,21 @@ const $NewsState = _$NewsStateTearOff();
 
 /// @nodoc
 mixin _$NewsState {
+  NewsStateViewModel get model;
+
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult loaded(NewsModel data),
-    @required TResult error(String error),
+    @required TResult initial(NewsStateViewModel model),
+    @required TResult loading(NewsStateViewModel model),
+    @required TResult loaded(NewsStateViewModel model),
+    @required TResult error(NewsStateViewModel model),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult loaded(NewsModel data),
-    TResult error(String error),
+    TResult initial(NewsStateViewModel model),
+    TResult loading(NewsStateViewModel model),
+    TResult loaded(NewsStateViewModel model),
+    TResult error(NewsStateViewModel model),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -74,12 +80,18 @@ mixin _$NewsState {
     TResult error(Error value),
     @required TResult orElse(),
   });
+
+  @JsonKey(ignore: true)
+  $NewsStateCopyWith<NewsState> get copyWith;
 }
 
 /// @nodoc
 abstract class $NewsStateCopyWith<$Res> {
   factory $NewsStateCopyWith(NewsState value, $Res Function(NewsState) then) =
       _$NewsStateCopyWithImpl<$Res>;
+  $Res call({NewsStateViewModel model});
+
+  $NewsStateViewModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -89,12 +101,36 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
   final NewsState _value;
   // ignore: unused_field
   final $Res Function(NewsState) _then;
+
+  @override
+  $Res call({
+    Object model = freezed,
+  }) {
+    return _then(_value.copyWith(
+      model: model == freezed ? _value.model : model as NewsStateViewModel,
+    ));
+  }
+
+  @override
+  $NewsStateViewModelCopyWith<$Res> get model {
+    if (_value.model == null) {
+      return null;
+    }
+    return $NewsStateViewModelCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value));
+    });
+  }
 }
 
 /// @nodoc
-abstract class $InitialCopyWith<$Res> {
+abstract class $InitialCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
   factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
       _$InitialCopyWithImpl<$Res>;
+  @override
+  $Res call({NewsStateViewModel model});
+
+  @override
+  $NewsStateViewModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -105,52 +141,73 @@ class _$InitialCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 
   @override
   Initial get _value => super._value as Initial;
+
+  @override
+  $Res call({
+    Object model = freezed,
+  }) {
+    return _then(Initial(
+      model == freezed ? _value.model : model as NewsStateViewModel,
+    ));
+  }
 }
 
 /// @nodoc
 class _$Initial implements Initial {
-  const _$Initial();
+  const _$Initial(this.model) : assert(model != null);
+
+  @override
+  final NewsStateViewModel model;
 
   @override
   String toString() {
-    return 'NewsState.initial()';
+    return 'NewsState.initial(model: $model)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Initial);
+    return identical(this, other) ||
+        (other is Initial &&
+            (identical(other.model, model) ||
+                const DeepCollectionEquality().equals(other.model, model)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(model);
+
+  @JsonKey(ignore: true)
+  @override
+  $InitialCopyWith<Initial> get copyWith =>
+      _$InitialCopyWithImpl<Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult loaded(NewsModel data),
-    @required TResult error(String error),
+    @required TResult initial(NewsStateViewModel model),
+    @required TResult loading(NewsStateViewModel model),
+    @required TResult loaded(NewsStateViewModel model),
+    @required TResult error(NewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    return initial();
+    return initial(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult loaded(NewsModel data),
-    TResult error(String error),
+    TResult initial(NewsStateViewModel model),
+    TResult loading(NewsStateViewModel model),
+    TResult loaded(NewsStateViewModel model),
+    TResult error(NewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
-      return initial();
+      return initial(model);
     }
     return orElse();
   }
@@ -188,13 +245,24 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements NewsState {
-  const factory Initial() = _$Initial;
+  const factory Initial(NewsStateViewModel model) = _$Initial;
+
+  @override
+  NewsStateViewModel get model;
+  @override
+  @JsonKey(ignore: true)
+  $InitialCopyWith<Initial> get copyWith;
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> {
+abstract class $LoadingCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
   factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
       _$LoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({NewsStateViewModel model});
+
+  @override
+  $NewsStateViewModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -205,52 +273,73 @@ class _$LoadingCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 
   @override
   Loading get _value => super._value as Loading;
+
+  @override
+  $Res call({
+    Object model = freezed,
+  }) {
+    return _then(Loading(
+      model == freezed ? _value.model : model as NewsStateViewModel,
+    ));
+  }
 }
 
 /// @nodoc
 class _$Loading implements Loading {
-  const _$Loading();
+  const _$Loading(this.model) : assert(model != null);
+
+  @override
+  final NewsStateViewModel model;
 
   @override
   String toString() {
-    return 'NewsState.loading()';
+    return 'NewsState.loading(model: $model)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Loading);
+    return identical(this, other) ||
+        (other is Loading &&
+            (identical(other.model, model) ||
+                const DeepCollectionEquality().equals(other.model, model)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(model);
+
+  @JsonKey(ignore: true)
+  @override
+  $LoadingCopyWith<Loading> get copyWith =>
+      _$LoadingCopyWithImpl<Loading>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult loaded(NewsModel data),
-    @required TResult error(String error),
+    @required TResult initial(NewsStateViewModel model),
+    @required TResult loading(NewsStateViewModel model),
+    @required TResult loaded(NewsStateViewModel model),
+    @required TResult error(NewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    return loading();
+    return loading(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult loaded(NewsModel data),
-    TResult error(String error),
+    TResult initial(NewsStateViewModel model),
+    TResult loading(NewsStateViewModel model),
+    TResult loaded(NewsStateViewModel model),
+    TResult error(NewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loading != null) {
-      return loading();
+      return loading(model);
     }
     return orElse();
   }
@@ -288,16 +377,24 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements NewsState {
-  const factory Loading() = _$Loading;
+  const factory Loading(NewsStateViewModel model) = _$Loading;
+
+  @override
+  NewsStateViewModel get model;
+  @override
+  @JsonKey(ignore: true)
+  $LoadingCopyWith<Loading> get copyWith;
 }
 
 /// @nodoc
-abstract class $LoadedCopyWith<$Res> {
+abstract class $LoadedCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
   factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) then) =
       _$LoadedCopyWithImpl<$Res>;
-  $Res call({NewsModel data});
+  @override
+  $Res call({NewsStateViewModel model});
 
-  $NewsModelCopyWith<$Res> get data;
+  @override
+  $NewsStateViewModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -311,47 +408,37 @@ class _$LoadedCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object data = freezed,
+    Object model = freezed,
   }) {
     return _then(Loaded(
-      data == freezed ? _value.data : data as NewsModel,
+      model == freezed ? _value.model : model as NewsStateViewModel,
     ));
-  }
-
-  @override
-  $NewsModelCopyWith<$Res> get data {
-    if (_value.data == null) {
-      return null;
-    }
-    return $NewsModelCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
   }
 }
 
 /// @nodoc
 class _$Loaded implements Loaded {
-  const _$Loaded(this.data) : assert(data != null);
+  const _$Loaded(this.model) : assert(model != null);
 
   @override
-  final NewsModel data;
+  final NewsStateViewModel model;
 
   @override
   String toString() {
-    return 'NewsState.loaded(data: $data)';
+    return 'NewsState.loaded(model: $model)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Loaded &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+            (identical(other.model, model) ||
+                const DeepCollectionEquality().equals(other.model, model)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(model);
 
   @JsonKey(ignore: true)
   @override
@@ -361,30 +448,30 @@ class _$Loaded implements Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult loaded(NewsModel data),
-    @required TResult error(String error),
+    @required TResult initial(NewsStateViewModel model),
+    @required TResult loading(NewsStateViewModel model),
+    @required TResult loaded(NewsStateViewModel model),
+    @required TResult error(NewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    return loaded(data);
+    return loaded(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult loaded(NewsModel data),
-    TResult error(String error),
+    TResult initial(NewsStateViewModel model),
+    TResult loading(NewsStateViewModel model),
+    TResult loaded(NewsStateViewModel model),
+    TResult error(NewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loaded != null) {
-      return loaded(data);
+      return loaded(model);
     }
     return orElse();
   }
@@ -422,18 +509,24 @@ class _$Loaded implements Loaded {
 }
 
 abstract class Loaded implements NewsState {
-  const factory Loaded(NewsModel data) = _$Loaded;
+  const factory Loaded(NewsStateViewModel model) = _$Loaded;
 
-  NewsModel get data;
+  @override
+  NewsStateViewModel get model;
+  @override
   @JsonKey(ignore: true)
   $LoadedCopyWith<Loaded> get copyWith;
 }
 
 /// @nodoc
-abstract class $ErrorCopyWith<$Res> {
+abstract class $ErrorCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
   factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
       _$ErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  @override
+  $Res call({NewsStateViewModel model});
+
+  @override
+  $NewsStateViewModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -447,37 +540,37 @@ class _$ErrorCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object model = freezed,
   }) {
     return _then(Error(
-      error == freezed ? _value.error : error as String,
+      model == freezed ? _value.model : model as NewsStateViewModel,
     ));
   }
 }
 
 /// @nodoc
 class _$Error implements Error {
-  const _$Error(this.error) : assert(error != null);
+  const _$Error(this.model) : assert(model != null);
 
   @override
-  final String error;
+  final NewsStateViewModel model;
 
   @override
   String toString() {
-    return 'NewsState.error(error: $error)';
+    return 'NewsState.error(model: $model)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Error &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+            (identical(other.model, model) ||
+                const DeepCollectionEquality().equals(other.model, model)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(model);
 
   @JsonKey(ignore: true)
   @override
@@ -487,30 +580,30 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult loaded(NewsModel data),
-    @required TResult error(String error),
+    @required TResult initial(NewsStateViewModel model),
+    @required TResult loading(NewsStateViewModel model),
+    @required TResult loaded(NewsStateViewModel model),
+    @required TResult error(NewsStateViewModel model),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(loaded != null);
     assert(error != null);
-    return error(this.error);
+    return error(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult loaded(NewsModel data),
-    TResult error(String error),
+    TResult initial(NewsStateViewModel model),
+    TResult loading(NewsStateViewModel model),
+    TResult loaded(NewsStateViewModel model),
+    TResult error(NewsStateViewModel model),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
-      return error(this.error);
+      return error(model);
     }
     return orElse();
   }
@@ -548,9 +641,178 @@ class _$Error implements Error {
 }
 
 abstract class Error implements NewsState {
-  const factory Error(String error) = _$Error;
+  const factory Error(NewsStateViewModel model) = _$Error;
 
-  String get error;
+  @override
+  NewsStateViewModel get model;
+  @override
   @JsonKey(ignore: true)
   $ErrorCopyWith<Error> get copyWith;
+}
+
+/// @nodoc
+class _$NewsStateViewModelTearOff {
+  const _$NewsStateViewModelTearOff();
+
+// ignore: unused_element
+  _NewsStateViewModel call({int page = 1, NewsModel data, String error}) {
+    return _NewsStateViewModel(
+      page: page,
+      data: data,
+      error: error,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $NewsStateViewModel = _$NewsStateViewModelTearOff();
+
+/// @nodoc
+mixin _$NewsStateViewModel {
+  int get page;
+  NewsModel get data;
+  String get error;
+
+  @JsonKey(ignore: true)
+  $NewsStateViewModelCopyWith<NewsStateViewModel> get copyWith;
+}
+
+/// @nodoc
+abstract class $NewsStateViewModelCopyWith<$Res> {
+  factory $NewsStateViewModelCopyWith(
+          NewsStateViewModel value, $Res Function(NewsStateViewModel) then) =
+      _$NewsStateViewModelCopyWithImpl<$Res>;
+  $Res call({int page, NewsModel data, String error});
+
+  $NewsModelCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class _$NewsStateViewModelCopyWithImpl<$Res>
+    implements $NewsStateViewModelCopyWith<$Res> {
+  _$NewsStateViewModelCopyWithImpl(this._value, this._then);
+
+  final NewsStateViewModel _value;
+  // ignore: unused_field
+  final $Res Function(NewsStateViewModel) _then;
+
+  @override
+  $Res call({
+    Object page = freezed,
+    Object data = freezed,
+    Object error = freezed,
+  }) {
+    return _then(_value.copyWith(
+      page: page == freezed ? _value.page : page as int,
+      data: data == freezed ? _value.data : data as NewsModel,
+      error: error == freezed ? _value.error : error as String,
+    ));
+  }
+
+  @override
+  $NewsModelCopyWith<$Res> get data {
+    if (_value.data == null) {
+      return null;
+    }
+    return $NewsModelCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$NewsStateViewModelCopyWith<$Res>
+    implements $NewsStateViewModelCopyWith<$Res> {
+  factory _$NewsStateViewModelCopyWith(
+          _NewsStateViewModel value, $Res Function(_NewsStateViewModel) then) =
+      __$NewsStateViewModelCopyWithImpl<$Res>;
+  @override
+  $Res call({int page, NewsModel data, String error});
+
+  @override
+  $NewsModelCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$NewsStateViewModelCopyWithImpl<$Res>
+    extends _$NewsStateViewModelCopyWithImpl<$Res>
+    implements _$NewsStateViewModelCopyWith<$Res> {
+  __$NewsStateViewModelCopyWithImpl(
+      _NewsStateViewModel _value, $Res Function(_NewsStateViewModel) _then)
+      : super(_value, (v) => _then(v as _NewsStateViewModel));
+
+  @override
+  _NewsStateViewModel get _value => super._value as _NewsStateViewModel;
+
+  @override
+  $Res call({
+    Object page = freezed,
+    Object data = freezed,
+    Object error = freezed,
+  }) {
+    return _then(_NewsStateViewModel(
+      page: page == freezed ? _value.page : page as int,
+      data: data == freezed ? _value.data : data as NewsModel,
+      error: error == freezed ? _value.error : error as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_NewsStateViewModel implements _NewsStateViewModel {
+  _$_NewsStateViewModel({this.page = 1, this.data, this.error})
+      : assert(page != null);
+
+  @JsonKey(defaultValue: 1)
+  @override
+  final int page;
+  @override
+  final NewsModel data;
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'NewsStateViewModel(page: $page, data: $data, error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _NewsStateViewModel &&
+            (identical(other.page, page) ||
+                const DeepCollectionEquality().equals(other.page, page)) &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)) &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(page) ^
+      const DeepCollectionEquality().hash(data) ^
+      const DeepCollectionEquality().hash(error);
+
+  @JsonKey(ignore: true)
+  @override
+  _$NewsStateViewModelCopyWith<_NewsStateViewModel> get copyWith =>
+      __$NewsStateViewModelCopyWithImpl<_NewsStateViewModel>(this, _$identity);
+}
+
+abstract class _NewsStateViewModel implements NewsStateViewModel {
+  factory _NewsStateViewModel({int page, NewsModel data, String error}) =
+      _$_NewsStateViewModel;
+
+  @override
+  int get page;
+  @override
+  NewsModel get data;
+  @override
+  String get error;
+  @override
+  @JsonKey(ignore: true)
+  _$NewsStateViewModelCopyWith<_NewsStateViewModel> get copyWith;
 }

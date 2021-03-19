@@ -63,7 +63,7 @@ class _SavedNewsScreenState extends State<SavedNewsScreen> {
               );
             }
           }, successDelete: (_) {
-            return;
+            return Text('');
           });
         },
       ),

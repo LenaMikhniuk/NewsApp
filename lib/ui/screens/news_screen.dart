@@ -45,7 +45,6 @@ class _NewsScreenState extends State<NewsScreen> {
                 orElse: () {
                   return;
                 },
-                loading: () {},
                 loaded: (data) {},
                 error: (error) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -53,7 +52,7 @@ class _NewsScreenState extends State<NewsScreen> {
                       content: Row(
                         children: [
                           Text(
-                            error,
+                            state.model.error,
                             overflow: TextOverflow.visible,
                           ),
                         ],
@@ -65,22 +64,42 @@ class _NewsScreenState extends State<NewsScreen> {
             },
             builder: (context, state) {
               return state.when(
-                initial: () {
+                initial: (_) {
                   return Center(child: CircularProgressIndicator());
                 },
-                loading: () {
+                loading: (_) {
                   return Center(child: CircularProgressIndicator());
                 },
                 error: (_) {
                   return Icon(Icons.error);
                 },
                 loaded: (data) {
-                  return ListView.builder(
-                    // controller: _scrollController,
-                    itemBuilder: (context, index) {
-                      return NewsScreenItem(data.articles[index], false);
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      _bloc.add(NewsEvent.update());
+                      // just for better UX
+                      await Future.delayed(Duration(seconds: 1));
+                      return;
                     },
-                    itemCount: data.articles.length,
+                    child: ListView.separated(
+                      padding: EdgeInsets.only(bottom: 100),
+                      controller: _scrollController
+                        ..addListener(() {
+                          if (_scrollController.offset ==
+                              _scrollController.position.maxScrollExtent) {
+                            _bloc.add(
+                              NewsEvent.nextPage(),
+                            );
+                          }
+                        }),
+                      itemBuilder: (context, index) {
+                        return NewsScreenItem(
+                            state.model.data.articles[index], false);
+                      },
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 20),
+                      itemCount: state.model.data.articles.length,
+                    ),
                   );
                 },
               );

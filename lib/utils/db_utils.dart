@@ -28,6 +28,8 @@ class DBUtils {
         newsArticle.toJson(),
         conflictAlgorithm: sql.ConflictAlgorithm.replace,
       );
+    } else {
+      return null;
     }
   }
 

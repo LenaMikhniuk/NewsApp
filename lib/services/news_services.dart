@@ -2,10 +2,13 @@ import 'package:news_app/models/news_model.dart';
 import 'package:news_app/services/network_request.dart';
 
 class NewsServices {
-  Uri uri = Uri.parse(
-      'http://newsapi.org/v2/everything?domains=wsj.com&apiKey=27260db2e4034cb0b2ba15393e3e80ab');
+  static const String apiKey = '27260db2e4034cb0b2ba15393e3e80ab';
+  static const String baseUrl =
+      'https://newsapi.org/v2/everything?domains=wsj.com&pageSize=5&language=en';
 
-  Future<NewsModel> getNews() async {
+  Future<NewsModel> getNews({int page = 1}) async {
+    Uri uri = Uri.parse('$baseUrl&apiKey=$apiKey&page=$page');
+
     NetWorkRequest netWorkRequest = NetWorkRequest(uri);
 
     try {
