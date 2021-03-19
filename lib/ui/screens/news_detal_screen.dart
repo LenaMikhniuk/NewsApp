@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/bloc/saved_news_bloc.dart';
 import 'package:news_app/models/news_articles.dart';
-import 'package:news_app/services/news_services.dart';
 import 'package:news_app/shared.dart';
 import 'package:news_app/widgets/detail_screen_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
