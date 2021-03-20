@@ -9,6 +9,7 @@ class NewsScreenItem extends StatelessWidget {
   final bool isSaved;
 
   NewsScreenItem(this.article, this.isSaved);
+  final NewsServices newsServices = NewsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +57,6 @@ class NewsScreenItem extends StatelessWidget {
                       ),
                       Text(
                         DateTimeService.getDayFromDateTime(article.publishedAt),
-
-                        // overflow: TextOverflow.ellipsis,
                         style: FontsStyles.baseStyle.copyWith(
                           fontSize: 17,
                           color: AppColors.textColor.withOpacity(0.5),
@@ -71,7 +70,8 @@ class NewsScreenItem extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        article.title ?? "No title",
+                        newsServices
+                            .removeAllHtmlTags(article.title ?? "No title"),
                         style: FontsStyles.baseStyle
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
@@ -81,7 +81,9 @@ class NewsScreenItem extends StatelessWidget {
                     height: 15,
                   ),
                   Text(
-                    article.description ?? '',
+                    newsServices.removeAllHtmlTags(
+                      article.description ?? '',
+                    ),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
                     style: FontsStyles.baseStyle.copyWith(
