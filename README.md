@@ -1,16 +1,33 @@
-# news_app
+# NewsApp
 
-A new Flutter project.
+A simple news App with the use of REST API.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Table of contents
+* [Technologies info](#technologies_info)
+* [Setup](#setup)
+* [Features](#features)
+* [Contact](#contact)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Technologies info
+In this project, I am using the following: 
+* Bloc pattern with Flutter_bloc
+* Use Freezed for data objects and serialization
+* Store saved news in database with Sqflite
+* Animation with animation builder, animation controller, hero animation.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Setup
+To run this project:
+* Clone URL
+* Type $ flutter pub get in the command line
+* Type $ flutter flutter pub run build_runner build --delete-conflicting-outputs (because  of using freezed package)
+
+## Features
+https://github.com/LenaMikhniuk/NewsApp/blob/master/presentation/ezgif.com-video-to-gif.gif
+
+
+
+## Contact
+Created by almikhniuk@gmail.com - feel free to contact me!
