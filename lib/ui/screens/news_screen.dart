@@ -10,9 +10,10 @@ import 'package:news_app/shared.dart';
 import 'package:news_app/ui/screens/news_screen_item.dart';
 
 class NewsScreen extends StatefulWidget {
-  const NewsScreen({Key key, this.onFlip}) : super(key: key);
+  const NewsScreen({Key key, this.onFlip, this.iconData}) : super(key: key);
 
   final VoidCallback onFlip;
+  final IconData iconData;
 
   @override
   _NewsScreenState createState() => _NewsScreenState();
@@ -39,11 +40,23 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'News',
+          style: FontsStyles.baseStyle.copyWith(
+            fontSize: 30,
+            color: AppColors.textColorLight,
+          ),
+        ),
+      ),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: BottomAppBar(
           color: Colors.white,
           child: BottomFlipButton(
+            text: 'Show saved news',
+            icon: Icons.save_alt,
             onFlip: widget.onFlip,
           ),
         ),

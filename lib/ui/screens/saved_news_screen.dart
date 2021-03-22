@@ -30,11 +30,24 @@ class _SavedNewsScreenState extends State<SavedNewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[350],
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'Saved news',
+          style: FontsStyles.baseStyle.copyWith(
+            fontSize: 30,
+            color: Colors.white.withOpacity(0.8),
+          ),
+        ),
+      ),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: BottomAppBar(
-          color: Colors.white,
+          color: AppColors.textColorLight,
           child: BottomFlipButton(
+            text: 'Show news',
+            icon: Icons.home,
             onFlip: widget.onFlip,
           ),
         ),

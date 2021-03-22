@@ -33,7 +33,7 @@ class NewsDetailScreen extends StatelessWidget {
             successAdd: (model) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  duration: (Duration(milliseconds: 400)),
+                  duration: (Duration(seconds: 1)),
                   content: Text(model.message),
                 ),
               );
@@ -41,7 +41,7 @@ class NewsDetailScreen extends StatelessWidget {
             successDelete: (model) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  duration: (Duration(milliseconds: 400)),
+                  duration: (Duration(seconds: 1)),
                   content: Text(model.message),
                 ),
               );
@@ -52,15 +52,18 @@ class NewsDetailScreen extends StatelessWidget {
           return CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                backgroundColor: AppColors.textColor.withOpacity(0.6),
+                backgroundColor: AppColors.backgroundColor,
                 expandedHeight: 200.0,
                 floating: false,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    background: Image.network(
-                      article.urlToImage ?? 'No image',
-                      fit: BoxFit.cover,
+                    background: Hero(
+                      tag: article.urlToImage,
+                      child: Image.network(
+                        article.urlToImage ?? 'No image',
+                        fit: BoxFit.cover,
+                      ),
                     )),
               ),
               SliverFillRemaining(

@@ -22,7 +22,7 @@ class DetailPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.backgroundColor,
+      color: Colors.grey[100],
       width: double.infinity,
       height: double.infinity,
       child: SingleChildScrollView(
@@ -106,7 +106,8 @@ class DetailPageWidget extends StatelessWidget {
                       style: FontsStyles.baseStyle.copyWith(
                           color: AppColors.highlightColor,
                           fontWeight: FontWeight.w200,
-                          fontSize: 16),
+                          fontSize: 16,
+                          decoration: TextDecoration.underline),
                     ),
                     onTap: onTap,
                   ),

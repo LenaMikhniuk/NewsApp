@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/bloc/saved_news_bloc.dart';
 import 'package:news_app/bloc/news_bloc/news_bloc.dart';
-import 'package:news_app/ui/home.dart';
+import 'package:news_app/shared.dart';
 import 'package:news_app/ui/screens/news_screen.dart';
 import 'package:news_app/ui/screens/saved_news_screen.dart';
 import 'package:news_app/widgets/page_flip_builder.dart';
@@ -35,26 +35,47 @@ class MyApp extends StatelessWidget {
               onFlip: () => pageFlipKey.currentState?.flip(),
             ),
           ),
-        )
-        //Home(),
-
-        );
+        ));
   }
 }
 
 class BottomFlipButton extends StatelessWidget {
-  const BottomFlipButton({Key key, this.onFlip}) : super(key: key);
+  const BottomFlipButton({Key key, this.onFlip, this.icon, @required this.text})
+      : super(key: key);
   final VoidCallback onFlip;
+  final IconData icon;
+  final String text;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          onPressed: onFlip,
-          icon: const Icon(Icons.flip),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: onFlip,
+            child: Row(
+              children: [
+                Icon(
+                  Icons.arrow_back_ios,
+                  size: 17,
+                ),
+                Text(
+                  text ?? '',
+                  style: FontsStyles.baseStyle.copyWith(
+                    fontSize: 17,
+                    color: AppColors.highlightColor,
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 17,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

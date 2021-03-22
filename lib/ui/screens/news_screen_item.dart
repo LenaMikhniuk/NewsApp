@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/main.dart';
 import 'package:news_app/models/news_articles.dart';
 import 'package:news_app/services/news_services.dart';
 import 'package:news_app/shared.dart';
 import 'package:news_app/ui/screens/news_detal_screen.dart';
-import 'package:path/path.dart';
 
 class NewsScreenItem extends StatelessWidget {
   final NewsArticle article;
@@ -31,8 +29,11 @@ class NewsScreenItem extends StatelessWidget {
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
               ),
-              child: Image.network(
-                article.urlToImage,
+              child: Hero(
+                tag: article.urlToImage,
+                child: Image.network(
+                  article.urlToImage,
+                ),
               ),
             ),
             Padding(
