@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/shared.dart';
 import 'package:news_app/ui/screens/news_screen.dart';
@@ -25,45 +26,21 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_selectedPageValue],
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: CupertinoTabBar(
         currentIndex: _selectedPageValue,
         items: [
-          buildBottomNavigationBarItem(
-            'Current News',
-          ),
-          buildBottomNavigationBarItem(
-            'Saved',
-          ),
+          buildBottomNavigationBarItem('Current News', Icon(Icons.home)),
+          buildBottomNavigationBarItem('Saved', Icon(Icons.save_alt)),
         ],
         onTap: _selectedPage,
       ),
     );
   }
 
-  BottomNavigationBarItem buildBottomNavigationBarItem(String text) {
+  BottomNavigationBarItem buildBottomNavigationBarItem(String text, Icon icon) {
     return BottomNavigationBarItem(
-      icon: Text(
-        text,
-        style: FontsStyles.baseStyle.copyWith(
-          fontWeight: FontWeight.bold,
-          color: AppColors.textColor.withOpacity(0.4),
-        ),
-      ),
-      label: '',
-      activeIcon: Container(
-        decoration: BoxDecoration(
-          color: AppColors.highlightColor,
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
-        ),
-        padding: EdgeInsets.all(10),
-        child: Text(
-          text,
-          style: FontsStyles.baseStyle
-              .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-      ),
+      icon: icon,
+      label: text,
     );
   }
 }
