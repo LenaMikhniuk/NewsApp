@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/main.dart';
 import 'package:news_app/models/news_articles.dart';
 import 'package:news_app/services/news_services.dart';
 import 'package:news_app/shared.dart';
 import 'package:news_app/ui/screens/news_detal_screen.dart';
+import 'package:path/path.dart';
 
 class NewsScreenItem extends StatelessWidget {
   final NewsArticle article;
   final bool isSaved;
 
-  NewsScreenItem(this.article, this.isSaved);
+  NewsScreenItem(
+    this.article,
+    this.isSaved,
+  );
   final NewsServices newsServices = NewsServices();
 
   @override
@@ -93,7 +98,7 @@ class NewsScreenItem extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

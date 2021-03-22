@@ -3,10 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/bloc/saved_news_bloc.dart';
 import 'package:news_app/bloc/bloc/saved_news_state.dart';
 import 'package:news_app/bloc/bloc/saved_news_event.dart';
+import 'package:news_app/main.dart';
 
+import '../../shared.dart';
 import 'news_screen_item.dart';
 
 class SavedNewsScreen extends StatefulWidget {
+  const SavedNewsScreen({Key key, this.onFlip}) : super(key: key);
+
+  final VoidCallback onFlip;
+
   @override
   _SavedNewsScreenState createState() => _SavedNewsScreenState();
 }
@@ -24,6 +30,15 @@ class _SavedNewsScreenState extends State<SavedNewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: BottomAppBar(
+          color: Colors.white,
+          child: BottomFlipButton(
+            onFlip: widget.onFlip,
+          ),
+        ),
+      ),
       body: BlocBuilder<SavedNewsBloc, SavedNewsState>(
         builder: (context, state) {
           return state.when(initial: (_) {
@@ -38,7 +53,10 @@ class _SavedNewsScreenState extends State<SavedNewsScreen> {
                 data.model.articles.isNotEmpty) {
               return ListView.builder(
                 itemBuilder: (contet, index) {
-                  return NewsScreenItem(data.model.articles[index], true);
+                  return NewsScreenItem(
+                    data.model.articles[index],
+                    true,
+                  );
                 },
                 itemCount: data.model.articles.length,
               );
@@ -53,7 +71,10 @@ class _SavedNewsScreenState extends State<SavedNewsScreen> {
                 data.model.articles.isNotEmpty) {
               return ListView.builder(
                 itemBuilder: (contet, index) {
-                  return NewsScreenItem(data.model.articles[index], true);
+                  return NewsScreenItem(
+                    data.model.articles[index],
+                    true,
+                  );
                 },
                 itemCount: data.model.articles.length,
               );

@@ -4,11 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/bloc/news_bloc/news_bloc.dart';
 import 'package:news_app/bloc/news_bloc/news_event.dart';
 import 'package:news_app/bloc/news_bloc/news_state.dart';
+import 'package:news_app/main.dart';
 import 'package:news_app/shared.dart';
 
 import 'package:news_app/ui/screens/news_screen_item.dart';
 
 class NewsScreen extends StatefulWidget {
+  const NewsScreen({Key key, this.onFlip}) : super(key: key);
+
+  final VoidCallback onFlip;
+
   @override
   _NewsScreenState createState() => _NewsScreenState();
 }
@@ -34,6 +39,15 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: BottomAppBar(
+          color: Colors.white,
+          child: BottomFlipButton(
+            onFlip: widget.onFlip,
+          ),
+        ),
+      ),
       backgroundColor: AppColors.backgroundColor,
       body: BlocProvider<NewsBloc>(
         create: (context) => _bloc,
@@ -97,7 +111,9 @@ class _NewsScreenState extends State<NewsScreen> {
                       }),
                     itemBuilder: (context, index) {
                       return NewsScreenItem(
-                          state.model.data.articles[index], false);
+                        state.model.data.articles[index],
+                        false,
+                      );
                     },
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 20),
