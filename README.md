@@ -25,7 +25,7 @@ To run this project:
 * Type $ flutter flutter pub run build_runner build --delete-conflicting-outputs (because  of using freezed package)
 
 ## Features
-https://github.com/LenaMikhniuk/NewsApp/blob/master/presentation/ezgif.com-video-to-gif.gif?raw=true
+![News-Screen](https://github.com/LenaMikhniuk/NewsApp/blob/master/presentation/ezgif.com-video-to-gif.gif?raw=true)
 
 
 
